@@ -1,4 +1,5 @@
-import express from "express"; 
+import express from "express";
+import axios from "axios";
 
 export const app = express()
 
@@ -20,7 +21,7 @@ app.get('/api/phones/:id', async (req, res) => {
     try {
         // Fetch data from external API
         const response = await axios.get(`https://api.restful-api.dev/objects/${id}`);
-        res.status(200).json(response);
+        res.status(200).json(response.data);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching data from the external API.' });
     }
